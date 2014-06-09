@@ -6,6 +6,7 @@ public class PlayerControl : Ship {
 	public float speed = 20;
 	public Transform topPosition;
 	public Transform bottomPosition;
+	public GameManager gm;
 
 	void Start () {
 		myTransform = GetComponent<Transform>();
@@ -42,5 +43,13 @@ public class PlayerControl : Ship {
 		GUI.Box(new Rect(Screen.width - 100,Screen.height - 150,100,100), "weapons");
 		GUI.Button (new Rect(Screen.width - 100,Screen.height - 120,100,50), "weapon1");
 		GUI.Button (new Rect(Screen.width - 100,Screen.height - 50,100,50), "weapon2");
+	}
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.gameObject.CompareTag ("Ending")) 
+		{
+			GameManager.state = State.GameOver;
+			print ("You Win!");
+		}
 	}
 }
