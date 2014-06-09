@@ -7,7 +7,7 @@ public class SpawnEnemy : MonoBehaviour {
 	Transform transform;
 	void Start () {
 		transform = GetComponent<Transform>();
-		InvokeRepeating("CreateEnemy",0.01f,2.0f);
+		InvokeRepeating("CreateEnemy",0.5f,2.0f);
 	}
 
 	
