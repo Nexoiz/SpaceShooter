@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CameraScript : MonoBehaviour {
 
+	//Comment for git
+
 	public Transform target;
 
 	// Use this for initialization
