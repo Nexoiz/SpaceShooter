@@ -11,6 +11,7 @@ public class CameraScript : MonoBehaviour {
 	void Start () 
 	{
 		// Comment here for no reason
+		// Another comment
 	}
 	
 	// Update is called once per frame
