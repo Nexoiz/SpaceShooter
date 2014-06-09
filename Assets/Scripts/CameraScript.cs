@@ -6,8 +6,9 @@ public class CameraScript : MonoBehaviour {
 	public Transform target;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+		// Comment here for no reason
 	}
 	
 	// Update is called once per frame
