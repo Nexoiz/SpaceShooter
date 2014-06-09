@@ -3,10 +3,10 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-	public State state = State.None;
+	public static State state = State.None;
 
 
 public enum State {
-	Running, Pause, None, Menu
+	Running, Pause, None, Menu, GameOver
 }		
 }
