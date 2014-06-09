@@ -12,7 +12,7 @@ public class SpawnEnemy : MonoBehaviour {
 
 	
 	void CreateEnemy(){
-		Vector3 enemyVec = new Vector3(transform.position.x,Random.Range (-5f,5f),0);
-		Instantiate(enemy,enemyVec,transform.rotation);
+		Vector3 enemyPos = new Vector3(transform.position.x,Random.Range (-5f,5f),0);
+		Instantiate(enemy,enemyPos,transform.rotation);
 	}
 }
