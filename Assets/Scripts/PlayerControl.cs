@@ -17,11 +17,13 @@ public class PlayerControl : Ship {
 		float tempY2 = 2* margin +  2 * buttonSize;
 
 
+
 		upRect = new Rect (margin, Screen.height - tempY2 , buttonSize, buttonSize);
 		downRect = new Rect (margin, Screen.height - tempY, buttonSize, buttonSize);
 
 		aRect = new Rect(Screen.width - (margin + buttonSize),Screen.height -  tempY, buttonSize,buttonSize);
 		bRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY2, buttonSize,buttonSize);
+
 
 		myTransform = GetComponent<Transform>();
 		velocity = new Vector3(3.0f,0,0);
@@ -62,5 +64,6 @@ public class PlayerControl : Ship {
 		{
 
 		}
+
 	}
 }
