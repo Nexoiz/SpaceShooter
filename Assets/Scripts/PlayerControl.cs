@@ -8,12 +8,28 @@ public class PlayerControl : Ship {
 	public Transform bottomPosition;
 	public GameManager gm;
 
-	void Start () {
+	private Rect upRect, downRect, aRect, bRect;
+
+	void Start () 
+	{
+		float margin = Screen.height / 25f; 
+		float buttonSize = Screen.width / 15;
+		float tempY = margin +  buttonSize;
+		float tempY2 = 2* margin +  2 * buttonSize;
+
+
+		upRect = new Rect (margin, Screen.height - tempY2 , buttonSize, buttonSize);
+		downRect = new Rect (margin, Screen.height - tempY, buttonSize, buttonSize);
+
+		aRect = new Rect(Screen.width - (margin + buttonSize),Screen.height -  tempY, buttonSize,buttonSize);
+		bRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY2, buttonSize,buttonSize);
+
 		myTransform = GetComponent<Transform>();
 		velocity = new Vector3(3.0f,0,0);
 	}
 	
-	void Update () {
+	void Update () 
+	{
 		myTransform.Translate (velocity.x * Time.deltaTime, 0, 0, Space.World);
 	}
 	
@@ -30,19 +46,23 @@ public class PlayerControl : Ship {
 		transform.position = pos;
 // 		transform.Translate (0, translation, 0);	
 	}
-	void OnGUI () {
+	void OnGUI () 
+	{
 		
-		GUI.Box(new Rect(0,Screen.height - 110,100,120), "Movement");
-		
-		if (GUI.RepeatButton (new Rect (20, Screen.height - 90, 50, 40), "Up")) {
+		if (GUI.RepeatButton (upRect, "Up")) {
 			MovePad(1);	
 		}
-		if (GUI.RepeatButton (new Rect (20, Screen.height - 40, 50, 40), "Down")) {
+		if (GUI.RepeatButton (downRect, "Down")) {
 			MovePad(-1);
 		}
-		GUI.Box(new Rect(Screen.width - 100,Screen.height - 150,100,100), "weapons");
-		GUI.Button (new Rect(Screen.width - 100,Screen.height - 120,100,50), "weapon1");
-		GUI.Button (new Rect(Screen.width - 100,Screen.height - 50,100,50), "weapon2");
+		if(GUI.Button (aRect, "weapon1"))
+		{
+
+		}
+		if(GUI.Button (bRect, "weapon2"))
+		{
+
+		}
 	}
 	void OnTriggerEnter2D(Collider2D col)
 	{
