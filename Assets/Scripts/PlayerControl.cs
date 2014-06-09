@@ -6,6 +6,7 @@ public class PlayerControl : Ship {
 	public float speed = 20;
 	public Transform topPosition;
 	public Transform bottomPosition;
+	public GameManager gm;
 
 	private Rect upRect, downRect, aRect, bRect;
 
@@ -61,6 +62,14 @@ public class PlayerControl : Ship {
 		if(GUI.Button (bRect, "weapon2"))
 		{
 
+		}
+	}
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.gameObject.CompareTag ("Ending")) 
+		{
+			GameManager.state = State.GameOver;
+			print ("You Win!");
 		}
 	}
 }
