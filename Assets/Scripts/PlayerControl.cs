@@ -6,7 +6,7 @@ public class PlayerControl : Ship {
 	public float speed = 20;
 	public Transform topPosition;
 	public Transform bottomPosition;
-
+	public Texture2D texture;
 	private Rect upRect, downRect, aRect, bRect;
 
 	void Start () 
@@ -47,8 +47,8 @@ public class PlayerControl : Ship {
 	}
 	void OnGUI () 
 	{
-		
-		if (GUI.RepeatButton (upRect, "Up")) {
+		GUIStyle style  = new GUIStyle();
+		if (GUI.RepeatButton (upRect, texture,style)) {
 			MovePad(1);	
 		}
 		if (GUI.RepeatButton (downRect, "Down")) {
