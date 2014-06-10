@@ -6,11 +6,14 @@ public class PlayerControl : Ship {
 	public float speed = 20;
 	public Transform topPosition;
 	public Transform bottomPosition;
-	public Texture2D texture;
+
+	public GameManager gm;
+
 	private Rect upRect, downRect, aRect, bRect;
 
 	void Start () 
 	{
+		DeathZone ();
 		float margin = Screen.height / 25f; 
 		float buttonSize = Screen.width / 15;
 		float tempY = margin +  buttonSize;
@@ -48,7 +51,7 @@ public class PlayerControl : Ship {
 	void OnGUI () 
 	{
 		GUIStyle style  = new GUIStyle();
-		if (GUI.RepeatButton (upRect, texture,style)) {
+		if (GUI.RepeatButton (upRect, "Up",style)) {
 			MovePad(1);	
 		}
 		if (GUI.RepeatButton (downRect, "Down")) {
@@ -63,4 +66,25 @@ public class PlayerControl : Ship {
 
 		}
 	}
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.gameObject.CompareTag ("Ending")) 
+		{
+			GameManager.state = State.GameOver;
+			print ("You Win!");
+		}
+	}
+	void DeathZone()
+	{
+		GameObject obj = new GameObject ("DeathZone");
+		obj.tag = "Deathzone";
+		obj.transform.parent = transform;
+		Vector3 pos = Vector3.zero;
+		pos.x  = -8f;
+		obj.transform.localPosition = pos;
+		BoxCollider2D bc = obj.AddComponent<BoxCollider2D> ();
+		bc.size = new Vector2 (1f,20f);
+		obj.AddComponent<DeathZoneScript> ();
+	}
+
 }
