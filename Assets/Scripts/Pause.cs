@@ -21,6 +21,7 @@ public class Pause : MonoBehaviour {
 			DrawPauseButton();
 			break;
 		case State.Pause:
+			DrawPlayButton();
 			break;
 		}
 	}
@@ -28,8 +29,15 @@ public class Pause : MonoBehaviour {
 	{
 		if (GUI.Button (cRect, "pause")) 
 		{
-			print("Pause");
 			GameManager.state = State.Pause;
+			GameManager.StateChecker();
+		}
+	}
+	void DrawPlayButton()
+	{
+		if (GUI.Button (cRect, "play")) 
+		{
+			GameManager.state = State.Running;
 			GameManager.StateChecker();
 		}
 	}

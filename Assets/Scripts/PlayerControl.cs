@@ -84,11 +84,7 @@ public class PlayerControl : Ship {
 		{
 
 		}
-		
-		if(GUI.Button (dRect, "play"))
-		{
 
-		}
 
 
 	}
