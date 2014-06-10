@@ -1,22 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraScript : MonoBehaviour {
-
-	//Comment for git
-
+public class CameraScript : MonoBehaviour 
+{
 	public Transform target;
 
-	// Use this for initialization
-	void Start () 
+	void Update () 
 	{
-		// Comment here for no reason
-		// Another comment
-		// Conflict comment
-	}
-	
-	// Update is called once per frame
-	void Update () {
 		Vector3 pos;
 		pos = transform.position;
 		pos.x = target.position.x + 7;

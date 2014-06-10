@@ -10,31 +10,14 @@ public class PlayerControl : Ship {
 	public Texture buttonDown;
 	public GUIStyle myStyleUp;
 	public GUIStyle myStyleDown;
-	public Texture2D texture;
-
-	private Rect upRect, downRect, aRect, bRect, cRect;
-
+	public Texture2D texturePause;
+	
+	private Rect upRect, downRect, aRect, bRect, dRect;
+	
 	void Start () 
 	{
 		DeathZone ();
-		float margin = Screen.height / 25f; 
-		float buttonSize = Screen.width / 15;
-		float tempY = margin +  buttonSize;
-		float tempY2 = 2* margin +  2 * buttonSize;
-		float tempY3 = 7* margin + 6.5f * buttonSize;
-		 
-
-
-
-
-		upRect = new Rect (margin, Screen.height - tempY2 , buttonSize, buttonSize);
-		downRect = new Rect (margin, Screen.height - tempY, buttonSize, buttonSize);
-
-		aRect = new Rect(Screen.width - (margin + buttonSize),Screen.height -  tempY, buttonSize,buttonSize);
-		bRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY2, buttonSize,buttonSize);
-
-		cRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY3, buttonSize,buttonSize);
-
+		SetGUICoordinates();
 
 		myTransform = GetComponent<Transform>();
 		velocity = new Vector3(3.0f,0,0);
@@ -51,21 +34,22 @@ public class PlayerControl : Ship {
 		MovePad (translation);
 	}
 
-	void MovePad(float movement){
+	void MovePad(float movement)
+	{
 		Vector3 pos = transform.position;
 		pos.y = pos.y + movement * speed * Time.deltaTime;
 		pos.y = Mathf.Clamp(pos.y, bottomPosition.position.y, topPosition.position.y);
 		transform.position = pos;
-// 		transform.Translate (0, translation, 0);	
 	}
-	void OnGUI () 
-	{
-		
-		if (GUI.RepeatButton (upRect,"", myStyleUp)) {
 
+	void OnGUI () 
+	{	
+		if (GUI.RepeatButton (upRect,"", myStyleUp)) 
+		{
 			MovePad(1);	
 		}
-		if (GUI.RepeatButton (downRect, "", myStyleDown)) {
+		if (GUI.RepeatButton (downRect, "", myStyleDown)) 
+		{
 			MovePad(-1);
 		}
 		if(GUI.Button (aRect, "weapon1"))
@@ -76,12 +60,18 @@ public class PlayerControl : Ship {
 		{
 
 		}
-		if(GUI.Button (cRect, "pause"))
-		{
-
-		}
-
 	}
+
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.gameObject.CompareTag ("Ending")) 
+		{
+			GameManager.state = State.GameWon;
+			print ("You Won!");
+			StateChecker ();
+		}
+	}
+
 	void DeathZone()
 	{
 		GameObject obj = new GameObject ("DeathZone");
@@ -94,5 +84,17 @@ public class PlayerControl : Ship {
 		bc.size = new Vector2 (1f,20f);
 		obj.AddComponent<DeathZoneScript> ();
 	}
-
+	void SetGUICoordinates()
+	{
+		float margin = Screen.height / 25f; 
+		float buttonSize = Screen.width / 15;
+		float tempY = margin +  buttonSize;
+		float tempY2 = 2* margin +  2 * buttonSize;		 
+		
+		upRect = new Rect (margin, Screen.height - tempY2 , buttonSize, buttonSize);
+		downRect = new Rect (margin, Screen.height - tempY, buttonSize, buttonSize);
+		
+		aRect = new Rect(Screen.width - (margin + buttonSize),Screen.height -  tempY, buttonSize,buttonSize);
+		bRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY2, buttonSize,buttonSize);
+	}
 }
