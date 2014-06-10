@@ -4,7 +4,8 @@ using System.Collections;
 public class SpawnEnemy : MonoBehaviour {
 
 	public GameObject enemy;
-	private new Transform transform;
+	Transform transform;
+
 	void Start () {
 		transform = base.transform;
 		transform = GetComponent<Transform>();
@@ -12,8 +13,9 @@ public class SpawnEnemy : MonoBehaviour {
 	}
 
 	
-	void CreateEnemy(){
+	void CreateEnemy (){
 		Vector3 enemyPos = new Vector3(transform.position.x,Random.Range (-5f,5f),0);
 		Instantiate(enemy,enemyPos,transform.rotation);
 	}
+
 }
