@@ -16,6 +16,7 @@ public class PlayerControl : Ship {
 
 	void Start () 
 	{
+		DeathZone ();
 		float margin = Screen.height / 25f; 
 		float buttonSize = Screen.width / 15;
 		float tempY = margin +  buttonSize;
@@ -56,6 +57,7 @@ public class PlayerControl : Ship {
 	{
 		
 		if (GUI.RepeatButton (upRect,"", myStyleUp)) {
+
 			MovePad(1);	
 		}
 		if (GUI.RepeatButton (downRect, "", myStyleDown)) {
@@ -71,4 +73,17 @@ public class PlayerControl : Ship {
 		}
 
 	}
+	void DeathZone()
+	{
+		GameObject obj = new GameObject ("DeathZone");
+		obj.tag = "Deathzone";
+		obj.transform.parent = transform;
+		Vector3 pos = Vector3.zero;
+		pos.x  = -8f;
+		obj.transform.localPosition = pos;
+		BoxCollider2D bc = obj.AddComponent<BoxCollider2D> ();
+		bc.size = new Vector2 (1f,20f);
+		obj.AddComponent<DeathZoneScript> ();
+	}
+
 }
