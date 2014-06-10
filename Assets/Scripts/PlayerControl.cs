@@ -73,10 +73,14 @@ public class PlayerControl : Ship {
 	}
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		GameManager.state = State.GameWon;
-		print ("You Won!");
-		StateChecker();
+		if (col.gameObject.CompareTag ("Ending")) 
+		{
+			GameManager.state = State.GameWon;
+			print ("You Won!");
+			StateChecker ();
+		}
 	}
+
 	void DeathZone()
 	{
 		GameObject obj = new GameObject ("DeathZone");
