@@ -11,8 +11,9 @@ public class PlayerControl : Ship {
 	private GUIStyle myGUIStyle = new GUIStyle();
 	public GUIStyle myStyleUp;
 	public GUIStyle myStyleDown;
+	public Texture2D texture;
 
-	private Rect upRect, downRect, aRect, bRect;
+	private Rect upRect, downRect, aRect, bRect, cRect;
 
 	void Start () 
 	{
@@ -21,6 +22,9 @@ public class PlayerControl : Ship {
 		float buttonSize = Screen.width / 15;
 		float tempY = margin +  buttonSize;
 		float tempY2 = 2* margin +  2 * buttonSize;
+		float tempY3 = 7* margin + 6.5f * buttonSize;
+		 
+
 
 
 
@@ -29,6 +33,8 @@ public class PlayerControl : Ship {
 
 		aRect = new Rect(Screen.width - (margin + buttonSize),Screen.height -  tempY, buttonSize,buttonSize);
 		bRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY2, buttonSize,buttonSize);
+
+		cRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY3, buttonSize,buttonSize);
 
 
 		myTransform = GetComponent<Transform>();
@@ -68,6 +74,10 @@ public class PlayerControl : Ship {
 
 		}
 		if(GUI.Button (bRect, "weapon2"))
+		{
+
+		}
+		if(GUI.Button (cRect, "pause"))
 		{
 
 		}
