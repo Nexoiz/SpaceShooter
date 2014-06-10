@@ -7,6 +7,6 @@ public class GameManager : MonoBehaviour {
 
 
 public enum State {
-	Running, Pause, None, Menu, GameOver
+	Running, Pause, None, Front, Selector, GameOver
 }		
 }

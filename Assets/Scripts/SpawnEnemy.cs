@@ -4,7 +4,7 @@ using System.Collections;
 public class SpawnEnemy : MonoBehaviour {
 
 	public GameObject enemy;
-	Transform transform;
+	private new	Transform transform;
 
 	void Start () {
 		transform = base.transform;

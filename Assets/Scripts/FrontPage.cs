@@ -12,12 +12,38 @@ public class FrontPage : GameManager {
 
 		GUITexture background = GetComponent < GUITexture > ();
 		background.pixelInset = new Rect (0, 0, Screen.width, Screen.height);
+		state = State.Front;
 	}
 	
 	// Update is called once per frame
 	void OnGUI () {
-		if (GUI.Button (rect, "Click"))
-						Application.LoadLevel ("LevelSelect");
-	
+
+		switch (state) {
+
+		case State.Front:
+			if (GUI.Button (rect, "Click"))
+				state = State.Selector;
+			break;
+		case State.Selector:
+			SelectorScreen();
+			break;
+
+		}
+	}
+
+	public void SelectorScreen () {
+		
+		float buttonWidth = Screen.width / 10;
+		float buttonHeight = Screen.height / 8;
+		
+		if (GUI.Button (new Rect (Screen.width / 2 - buttonWidth * 2, Screen.height / 2 - buttonHeight / 2, buttonWidth, buttonHeight), "Buttoooon1")) {
+			Application.LoadLevel("Level1");
+		}
+		if (GUI.Button (new Rect (Screen.width / 2 - buttonWidth / 2, Screen.height / 2 - buttonHeight / 2, buttonWidth, buttonHeight), "Buttoooon2")) {
+			Application.LoadLevel("Level2");
+		}
+		if (GUI.Button (new Rect (Screen.width / 2 + buttonWidth , Screen.height / 2 - buttonHeight / 2, buttonWidth, buttonHeight), "Buttoooon3")) {
+			Application.LoadLevel("Level3");
+		}
 	}
 }
