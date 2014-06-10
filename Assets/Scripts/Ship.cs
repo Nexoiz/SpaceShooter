@@ -5,5 +5,6 @@ public class Ship : GameManager {
 	
 	protected Vector3 velocity;
 	public Transform myTransform;
+	public int health;
 
 }
