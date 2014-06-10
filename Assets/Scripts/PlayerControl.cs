@@ -8,7 +8,6 @@ public class PlayerControl : Ship {
 	public Transform bottomPosition;
 	public Texture buttonUp;
 	public Texture buttonDown;
-	private GUIStyle myGUIStyle = new GUIStyle();
 	public GUIStyle myStyleUp;
 	public GUIStyle myStyleDown;
 	public Texture2D texture;
