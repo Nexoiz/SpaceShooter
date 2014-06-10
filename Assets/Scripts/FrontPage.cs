@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class FrontPage : GameManager {
+
 	Rect rect = new Rect();
 	// Use this for initialization
 	void Start () {
@@ -14,14 +15,14 @@ public class FrontPage : GameManager {
 		background.pixelInset = new Rect (0, 0, Screen.width, Screen.height);
 		state = State.Front;
 	}
-	
+
 	// Update is called once per frame
 	void OnGUI () {
 
 		switch (state) {
 
 		case State.Front:
-			if (GUI.Button (rect, "Click"))
+			if (GUI.Button (rect, "Click")) 
 				state = State.Selector;
 			break;
 		case State.Selector:
