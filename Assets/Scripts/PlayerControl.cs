@@ -69,8 +69,9 @@ public class PlayerControl : Ship {
 	{
 		if (col.gameObject.CompareTag ("Ending")) 
 		{
-			GameManager.state = State.GameOver;
-			print ("You Win!");
+			GameManager.state = State.GameWon;
+			print ("You Won!");
+			StateChecker();
 		}
 	}
 	void DeathZone()
