@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
 	
 
 
-public enum State {
+public enum State 
+{
 	Running, Pause, None, Menu, GameOver, GameWon,  Front, Selector
 }		

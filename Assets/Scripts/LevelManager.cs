@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LevelManager : MonoBehaviour {
-	
-	// Use this for initialization
+public class LevelManager : MonoBehaviour 
+{
+
 	public Sprite backSprite;
 	
 	void Start () 
