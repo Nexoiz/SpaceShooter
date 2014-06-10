@@ -6,7 +6,11 @@ public class PlayerControl : Ship {
 	public float speed = 20;
 	public Transform topPosition;
 	public Transform bottomPosition;
-	public GameManager gm;
+	public Texture buttonUp;
+	public Texture buttonDown;
+	private GUIStyle myGUIStyle = new GUIStyle();
+	public GUIStyle myStyleUp;
+	public GUIStyle myStyleDown;
 
 	private Rect upRect, downRect, aRect, bRect;
 
@@ -51,10 +55,10 @@ public class PlayerControl : Ship {
 	void OnGUI () 
 	{
 		
-		if (GUI.RepeatButton (upRect, "Up")) {
+		if (GUI.RepeatButton (upRect,"", myStyleUp)) {
 			MovePad(1);	
 		}
-		if (GUI.RepeatButton (downRect, "Down")) {
+		if (GUI.RepeatButton (downRect, "", myStyleDown)) {
 			MovePad(-1);
 		}
 		if(GUI.Button (aRect, "weapon1"))
@@ -66,13 +70,5 @@ public class PlayerControl : Ship {
 
 		}
 
-	}
-	void OnTriggerEnter2D(Collider2D col)
-	{
-		if (col.gameObject.CompareTag ("Ending")) 
-		{
-			GameManager.state = State.GameOver;
-			print ("You Win!");
-		}
 	}
 }
