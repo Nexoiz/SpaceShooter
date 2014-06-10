@@ -6,16 +6,22 @@ public class PlayerControl : Ship {
 	public float speed = 20;
 	public Transform topPosition;
 	public Transform bottomPosition;
-	public GameManager gm;
+	public Texture buttonUp;
+	public Texture buttonDown;
+	private GUIStyle myGUIStyle = new GUIStyle();
+	public GUIStyle myStyleUp;
+	public GUIStyle myStyleDown;
 
 	private Rect upRect, downRect, aRect, bRect;
 
 	void Start () 
 	{
+		DeathZone ();
 		float margin = Screen.height / 25f; 
 		float buttonSize = Screen.width / 15;
 		float tempY = margin +  buttonSize;
 		float tempY2 = 2* margin +  2 * buttonSize;
+
 
 
 		upRect = new Rect (margin, Screen.height - tempY2 , buttonSize, buttonSize);
@@ -23,6 +29,7 @@ public class PlayerControl : Ship {
 
 		aRect = new Rect(Screen.width - (margin + buttonSize),Screen.height -  tempY, buttonSize,buttonSize);
 		bRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY2, buttonSize,buttonSize);
+
 
 		myTransform = GetComponent<Transform>();
 		velocity = new Vector3(3.0f,0,0);
@@ -49,10 +56,11 @@ public class PlayerControl : Ship {
 	void OnGUI () 
 	{
 		
-		if (GUI.RepeatButton (upRect, "Up")) {
+		if (GUI.RepeatButton (upRect,"", myStyleUp)) {
+
 			MovePad(1);	
 		}
-		if (GUI.RepeatButton (downRect, "Down")) {
+		if (GUI.RepeatButton (downRect, "", myStyleDown)) {
 			MovePad(-1);
 		}
 		if(GUI.Button (aRect, "weapon1"))
@@ -63,13 +71,19 @@ public class PlayerControl : Ship {
 		{
 
 		}
+
 	}
-	void OnTriggerEnter2D(Collider2D col)
+	void DeathZone()
 	{
-		if (col.gameObject.CompareTag ("Ending")) 
-		{
-			GameManager.state = State.GameOver;
-			print ("You Win!");
-		}
+		GameObject obj = new GameObject ("DeathZone");
+		obj.tag = "Deathzone";
+		obj.transform.parent = transform;
+		Vector3 pos = Vector3.zero;
+		pos.x  = -8f;
+		obj.transform.localPosition = pos;
+		BoxCollider2D bc = obj.AddComponent<BoxCollider2D> ();
+		bc.size = new Vector2 (1f,20f);
+		obj.AddComponent<DeathZoneScript> ();
 	}
+
 }
