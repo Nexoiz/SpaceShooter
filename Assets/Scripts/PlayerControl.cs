@@ -10,9 +10,9 @@ public class PlayerControl : Ship {
 	public Texture buttonDown;
 	public GUIStyle myStyleUp;
 	public GUIStyle myStyleDown;
-	public Texture2D texture;
+	public Texture2D texturePause;
 
-	private Rect upRect, downRect, aRect, bRect, cRect;
+	private Rect upRect, downRect, aRect, bRect, cRect, dRect;
 
 	void Start () 
 	{
@@ -22,6 +22,7 @@ public class PlayerControl : Ship {
 		float tempY = margin +  buttonSize;
 		float tempY2 = 2* margin +  2 * buttonSize;
 		float tempY3 = 7* margin + 6.5f * buttonSize;
+		float tempY4 = 7* margin + 5.5f * buttonSize;
 		 
 
 
@@ -34,6 +35,7 @@ public class PlayerControl : Ship {
 		bRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY2, buttonSize,buttonSize);
 
 		cRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY3, buttonSize,buttonSize);
+		dRect = new Rect (Screen.width - (margin + buttonSize), Screen.height - tempY4, buttonSize,buttonSize);
 
 
 		myTransform = GetComponent<Transform>();
@@ -77,6 +79,10 @@ public class PlayerControl : Ship {
 
 		}
 		if(GUI.Button (cRect, "pause"))
+		{
+
+		}
+		if(GUI.Button (dRect, "play"))
 		{
 
 		}
