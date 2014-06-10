@@ -39,8 +39,7 @@ public class PlayerControl : Ship {
 		aRect = new Rect(Screen.width - (margin + buttonSize),Screen.height -  tempY, buttonSize,buttonSize);
 		bRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY2, buttonSize,buttonSize);
 
-
-		cRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY3, buttonSize,buttonSize);
+		
 		dRect = new Rect (Screen.width - (margin + buttonSize), Screen.height - tempY4, buttonSize,buttonSize);
 
 
@@ -85,11 +84,7 @@ public class PlayerControl : Ship {
 		{
 
 		}
-
-		if(GUI.Button (cRect, "pause"))
-		{
-
-		}
+		
 		if(GUI.Button (dRect, "play"))
 		{
 

@@ -28,6 +28,7 @@ public class Pause : MonoBehaviour {
 	{
 		if (GUI.Button (cRect, "pause")) 
 		{
+			print("Pause");
 			GameManager.state = State.Pause;
 			GameManager.StateChecker();
 		}

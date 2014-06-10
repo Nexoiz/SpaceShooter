@@ -2,16 +2,16 @@
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
-
+	
 	// Use this for initialization
 	public Sprite backSprite;
-
+	
 	void Start () 
 	{
 		GameManager.state = State.Running;
 		CreateBackground();
 	}
-
+	
 	void CreateBackground()
 	{
 		GameObject player = GameObject.Find ("Ship");
