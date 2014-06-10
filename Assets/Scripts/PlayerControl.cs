@@ -11,23 +11,13 @@ public class PlayerControl : Ship {
 	public GUIStyle myStyleUp;
 	public GUIStyle myStyleDown;
 	public Texture2D texturePause;
-
-
+	
 	private Rect upRect, downRect, aRect, bRect, dRect;
 	
 	void Start () 
 	{
 		DeathZone ();
-		float margin = Screen.height / 25f; 
-		float buttonSize = Screen.width / 15;
-		float tempY = margin +  buttonSize;
-		float tempY2 = 2* margin +  2 * buttonSize;		 
-
-		upRect = new Rect (margin, Screen.height - tempY2 , buttonSize, buttonSize);
-		downRect = new Rect (margin, Screen.height - tempY, buttonSize, buttonSize);
-
-		aRect = new Rect(Screen.width - (margin + buttonSize),Screen.height -  tempY, buttonSize,buttonSize);
-		bRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY2, buttonSize,buttonSize);
+		SetGUICoordinates();
 
 		myTransform = GetComponent<Transform>();
 		velocity = new Vector3(3.0f,0,0);
@@ -93,5 +83,18 @@ public class PlayerControl : Ship {
 		BoxCollider2D bc = obj.AddComponent<BoxCollider2D> ();
 		bc.size = new Vector2 (1f,20f);
 		obj.AddComponent<DeathZoneScript> ();
+	}
+	void SetGUICoordinates()
+	{
+		float margin = Screen.height / 25f; 
+		float buttonSize = Screen.width / 15;
+		float tempY = margin +  buttonSize;
+		float tempY2 = 2* margin +  2 * buttonSize;		 
+		
+		upRect = new Rect (margin, Screen.height - tempY2 , buttonSize, buttonSize);
+		downRect = new Rect (margin, Screen.height - tempY, buttonSize, buttonSize);
+		
+		aRect = new Rect(Screen.width - (margin + buttonSize),Screen.height -  tempY, buttonSize,buttonSize);
+		bRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY2, buttonSize,buttonSize);
 	}
 }
