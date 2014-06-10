@@ -12,11 +12,10 @@ public class PlayerControl : Ship {
 	public GUIStyle myStyleDown;
 	public Texture2D texturePause;
 
-<<<<<<< HEAD
+
 	private Rect upRect, downRect, aRect, bRect, cRect, dRect;
-=======
-	private Rect upRect, downRect, aRect, bRect;
->>>>>>> cbcd9759967634460a87a07abb017065cf8e15e0
+
+
 
 	void Start () 
 	{
@@ -25,15 +24,14 @@ public class PlayerControl : Ship {
 		float buttonSize = Screen.width / 15;
 		float tempY = margin +  buttonSize;
 		float tempY2 = 2* margin +  2 * buttonSize;
-<<<<<<< HEAD
+
 		float tempY3 = 7* margin + 6.5f * buttonSize;
 		float tempY4 = 7* margin + 5.5f * buttonSize;
 		 
 
 
 
-=======
->>>>>>> cbcd9759967634460a87a07abb017065cf8e15e0
+
 
 		upRect = new Rect (margin, Screen.height - tempY2 , buttonSize, buttonSize);
 		downRect = new Rect (margin, Screen.height - tempY, buttonSize, buttonSize);
@@ -41,12 +39,11 @@ public class PlayerControl : Ship {
 		aRect = new Rect(Screen.width - (margin + buttonSize),Screen.height -  tempY, buttonSize,buttonSize);
 		bRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY2, buttonSize,buttonSize);
 
-<<<<<<< HEAD
+
 		cRect = new Rect(Screen.width - (margin + buttonSize), Screen.height - tempY3, buttonSize,buttonSize);
 		dRect = new Rect (Screen.width - (margin + buttonSize), Screen.height - tempY4, buttonSize,buttonSize);
 
-=======
->>>>>>> cbcd9759967634460a87a07abb017065cf8e15e0
+
 
 		myTransform = GetComponent<Transform>();
 		velocity = new Vector3(3.0f,0,0);
@@ -88,7 +85,7 @@ public class PlayerControl : Ship {
 		{
 
 		}
-<<<<<<< HEAD
+
 		if(GUI.Button (cRect, "pause"))
 		{
 
@@ -97,8 +94,7 @@ public class PlayerControl : Ship {
 		{
 
 		}
-=======
->>>>>>> cbcd9759967634460a87a07abb017065cf8e15e0
+
 
 	}
 	void OnTriggerEnter2D(Collider2D col)
