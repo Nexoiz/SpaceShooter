@@ -14,5 +14,4 @@ public class Projectile : MonoBehaviour {
 			AudioSource.PlayClipAtPoint(clip, transform.position);
 		}
 	}
-
 }
