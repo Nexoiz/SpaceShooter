@@ -5,7 +5,6 @@ public class SpawnEnemy : MonoBehaviour {
 
 	public GameObject enemy;
 	private new	Transform transform;
-
 	void Start () 
 	{
 		transform = base.transform;
