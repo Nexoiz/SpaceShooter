@@ -16,9 +16,9 @@ public class LevelManager : MonoBehaviour
 	{
 		GameObject player = GameObject.Find ("Ship");
 		// Creating background holder
-		GameObject obj = new GameObject("Background");
+		GameObject obj = new GameObject("Background");   
 		obj.transform.position = Vector3.zero; 
-		// Creating  background
+		// Creating  the backgrounds
 		for (int i = 0 ; i < 3 ; i++){
 			GameObject objSub = new GameObject("Background");
 			SpriteRenderer sr = objSub.AddComponent<SpriteRenderer>();
