@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Enemy : Ship {
 
+	public int point = 10;
 	public virtual void Start () 
 	{
 		myTransform = GetComponent<Transform>();
