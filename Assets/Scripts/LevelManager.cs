@@ -32,4 +32,23 @@ public class LevelManager : MonoBehaviour
 			objSub.transform.localPosition = pos;
 		}
 	}
+
+	void Update()
+	{
+		if(GameManager.state == State.GameOver)
+		{
+			if(Input.anyKeyDown){
+				Application.LoadLevel(Application.loadedLevelName);
+			}
+		}
+	}
+	void OnGUI()
+	{
+		if(GameManager.state == State.GameOver){
+			float box = Screen.width / 2;
+			GUI.Box (new Rect(Screen.width /2 - box / 2, Screen.height/2 - box / 4,
+		                  box , box / 4 ), "GameOver");
+	
+		}
+	}
 }
