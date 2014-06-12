@@ -2,13 +2,16 @@
 using System.Collections;
 
 public class DeathZoneScript : MonoBehaviour {
+	public Transform target;
 
-	// Use this for initialization
-	void Start () {
-	
+	void Update () {
+		Vector3 pos;
+		pos = transform.position;
+		pos.x = target.position.x - 8;
+		transform.position = pos;
 	}
 	
-	// Update is called once per frame
+
 	void OnCollisionEnter2D (Collision2D col) 
 	{
 		if (col.gameObject.CompareTag ("Enemy")) 

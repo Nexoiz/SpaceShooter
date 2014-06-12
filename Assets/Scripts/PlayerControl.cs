@@ -74,13 +74,15 @@ public class PlayerControl : Ship {
 	{
 		GameObject obj = new GameObject ("DeathZone");
 		obj.tag = "Deathzone";
-		obj.transform.parent = transform;
+		//obj.transform.parent = transform;
 		Vector3 pos = Vector3.zero;
-		pos.x  = -8f;
-		obj.transform.localPosition = pos;
+		//pos.x  = -8f;
+		//obj.transform.localPosition = pos;
 		BoxCollider2D bc = obj.AddComponent<BoxCollider2D> ();
 		bc.size = new Vector2 (1f,20f);
-		obj.AddComponent<DeathZoneScript> ();
+		DeathZoneScript dzs = obj.AddComponent<DeathZoneScript> ();
+		dzs.target = transform;
+
 	}
 	void SetGUICoordinates()
 	{
