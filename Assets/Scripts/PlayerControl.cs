@@ -6,8 +6,6 @@ public class PlayerControl : Ship {
 	public float speed = 20;
 	public Transform topPosition;
 	public Transform bottomPosition;
-	public Texture buttonUp;
-	public Texture buttonDown;
 	public GUIStyle myStyleUp;
 	public GUIStyle myStyleDown;
 	public Texture2D texturePause;
