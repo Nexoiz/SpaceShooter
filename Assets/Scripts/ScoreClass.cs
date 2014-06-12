@@ -3,8 +3,10 @@ using System.Collections;
 
 public class ScoreClass: MonoBehaviour {
 
-	private int score;
+	private static int score;
 	private Rect scoreRect;
+	public GUIStyle myStyle;
+
 	void Start()
 	{
 		float box = Screen.width / 5;
@@ -28,6 +30,6 @@ public class ScoreClass: MonoBehaviour {
 
 	void OnGUI()
 	{
-		GUI.Box(scoreRect,score.ToString());
+		GUI.Box(scoreRect,score.ToString(),myStyle);
 	}
 }
