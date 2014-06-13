@@ -4,8 +4,8 @@ using System.Collections;
 public class HealthClass : MonoBehaviour 
 {
 	private int health;
-	private int initialHealth = 50;
-	private int lives = 1;
+	private int initialHealth = 500;
+	private int lives = 3;
 
 	public int Health
 	{
@@ -37,11 +37,13 @@ public class HealthClass : MonoBehaviour
 	public GUIStyle myStyle;
 	private Rect healthRect;
 	private Rect livesRect;
-	// Use this for initialization
+	private Texture2D texture ;
+
 	void Start () 
 	{
+		texture = new Texture2D(1, 1);
 		float box = Screen.width / 5;
-		healthRect = new Rect(0,0, box , box / 3);
+		healthRect = new Rect(0,0, box , box / 5);
 		livesRect = new Rect(Screen.width - box, 0 , box , box / 3);
 		health = initialHealth;
 	}
@@ -49,10 +51,24 @@ public class HealthClass : MonoBehaviour
 	// Update is called once per frame
 	void OnGUI () 
 	{
-		myStyle.alignment = TextAnchor.MiddleLeft;
-		GUI.Box (healthRect, health.ToString(), myStyle);
+		float box = Screen.width / 5;
+		healthRect.width = box;
+		DrawQuad (healthRect, Color.red);
 
+		float ratio = (float)health / (float)initialHealth;
+		healthRect.width = box * ratio;
+		DrawQuad (healthRect, Color.green);
 		myStyle.alignment = TextAnchor.MiddleRight;
 		GUI.Box (livesRect, "LIFE: " + lives.ToString(), myStyle);
+	}
+
+
+ 
+	void DrawQuad(Rect position, Color color) 
+	{
+		texture.SetPixel(0,0,color);
+		texture.Apply();
+		GUI.skin.box.normal.background = texture;
+		GUI.Box(position, GUIContent.none);
 	}
 }

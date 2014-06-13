@@ -17,24 +17,19 @@ public class PlayerControl : Ship {
 		DeathZone ();
 		SetGUICoordinates();
 
-		myTransform = GetComponent<Transform>();
 		velocity = new Vector3(3.0f,0,0);
 	}
 	
 	void Update () 
 	{
-		myTransform.Translate (velocity.x * Time.deltaTime, 0, 0, Space.World);
-	}
-	
-	void FixedUpdate () {
-		float translation = Input.GetAxis ("Vertical"); // * Time.deltaTime;
-		if(translation == 0) return;
-		MovePad (translation);
+		float translation = Input.GetAxis ("Vertical"); 
+		Move(translation);
 	}
 
-	void MovePad(float movement)
+	public override void Move(float movement)
 	{
 		Vector3 pos = transform.position;
+		pos.x += velocity.x * Time.deltaTime;
 		pos.y = pos.y + movement * speed * Time.deltaTime;
 		pos.y = Mathf.Clamp(pos.y, bottomPosition.position.y, topPosition.position.y);
 		transform.position = pos;
@@ -44,11 +39,11 @@ public class PlayerControl : Ship {
 	{	
 		if (GUI.RepeatButton (upRect,"", myStyleUp)) 
 		{
-			MovePad(1);	
+			Move(1);	
 		}
 		if (GUI.RepeatButton (downRect, "", myStyleDown)) 
 		{
-			MovePad(-1);
+			Move(-1);
 		}
 		if(GUI.Button (aRect, "weapon1"))
 		{
@@ -74,10 +69,6 @@ public class PlayerControl : Ship {
 	{
 		GameObject obj = new GameObject ("DeathZone");
 		obj.tag = "Deathzone";
-		//obj.transform.parent = transform;
-		Vector3 pos = Vector3.zero;
-		//pos.x  = -8f;
-		//obj.transform.localPosition = pos;
 		BoxCollider2D bc = obj.AddComponent<BoxCollider2D> ();
 		bc.size = new Vector2 (1f,20f);
 		DeathZoneScript dzs = obj.AddComponent<DeathZoneScript> ();
