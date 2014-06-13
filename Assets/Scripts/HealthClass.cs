@@ -6,6 +6,7 @@ public class HealthClass : MonoBehaviour
 	private int health;
 	private int initialHealth = 500;
 	private int lives = 3;
+	public Texture healthFrame;
 
 	public int Health
 	{
@@ -58,6 +59,8 @@ public class HealthClass : MonoBehaviour
 		float ratio = (float)health / (float)initialHealth;
 		healthRect.width = box * ratio;
 		DrawQuad (healthRect, Color.green);
+		healthRect.width = box;
+		GUI.DrawTexture (healthRect,healthFrame);
 		myStyle.alignment = TextAnchor.MiddleRight;
 		GUI.Box (livesRect, "LIFE: " + lives.ToString(), myStyle);
 	}
