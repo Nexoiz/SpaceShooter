@@ -27,9 +27,9 @@ public class ScoreClass: MonoBehaviour {
 	public void ResetAll () {
 		score = 0;
 	}
-
+	private string strScore = "SCORE: "; 
 	void OnGUI()
 	{
-		GUI.Box(scoreRect,score.ToString(),myStyle);
+		GUI.Box(scoreRect, strScore + score.ToString(),myStyle);
 	}
 }

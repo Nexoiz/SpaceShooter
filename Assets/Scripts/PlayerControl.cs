@@ -19,10 +19,10 @@ public class PlayerControl : Ship {
 
 		velocity = new Vector3(3.0f,0,0);
 	}
-	
+	float translation = 0f;
 	void Update () 
 	{
-		float translation = Input.GetAxis ("Vertical"); 
+		//translation = Input.GetAxis ("Vertical");
 		Move(translation);
 	}
 
@@ -37,13 +37,14 @@ public class PlayerControl : Ship {
 
 	void OnGUI () 
 	{	
+		translation = 0f;
 		if (GUI.RepeatButton (upRect,"", myStyleUp)) 
 		{
-			Move(1);	
+			translation = 1;	
 		}
 		if (GUI.RepeatButton (downRect, "", myStyleDown)) 
 		{
-			Move(-1);
+			translation = -1;
 		}
 		if(GUI.Button (aRect, "weapon1"))
 		{
