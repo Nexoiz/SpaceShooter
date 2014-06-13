@@ -9,7 +9,9 @@ public class Projectile : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D col) {
 		if (col.gameObject.CompareTag ("Enemy")) 
 		{
-			int score = col.gameObject.GetComponent<Enemy>().point;
+			Enemy enemy = col.gameObject.GetComponent<Enemy>();
+			int score = enemy.point;
+			enemy.spawner.RemoveEnemy(col.gameObject);
 			GameObject.Find ("GameManager").GetComponent<ScoreClass>().Score = score;
 
 			Destroy(col.gameObject);

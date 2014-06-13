@@ -16,7 +16,9 @@ public class DeathZoneScript : MonoBehaviour {
 	{
 		if (col.gameObject.CompareTag ("Enemy")) 
 		{
-			Destroy(col.gameObject);
+			GameObject obj = col.gameObject;
+			obj.GetComponent<Enemy>().spawner.RemoveEnemy(obj);
+			Destroy(obj);
 		}
 	}
 }

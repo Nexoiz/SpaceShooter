@@ -5,6 +5,7 @@ public class Enemy : Ship
 {
 	public int damage = 50;
 	public int point = 10;
+	public SpawnEnemy spawner;
 	public virtual void Start () 
 	{
 		velocity = new Vector3(Random.Range(-5f,-1.5f),0,0);
@@ -20,6 +21,7 @@ public class Enemy : Ship
 		{
 			HealthClass hc = col.gameObject.GetComponent<HealthClass>();
 			hc.Health = damage;
+			spawner.RemoveEnemy(gameObject);
 			Destroy (gameObject);
 		}
 	}
