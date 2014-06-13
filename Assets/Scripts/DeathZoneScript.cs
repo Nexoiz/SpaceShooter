@@ -10,15 +10,4 @@ public class DeathZoneScript : MonoBehaviour {
 		pos.x = target.position.x - 8;
 		transform.position = pos;
 	}
-	
-
-	void OnCollisionEnter2D (Collision2D col) 
-	{
-		if (col.gameObject.CompareTag ("Enemy")) 
-		{
-			GameObject obj = col.gameObject;
-			obj.GetComponent<Enemy>().spawner.RemoveEnemy(obj);
-			Destroy(obj);
-		}
-	}
 }
