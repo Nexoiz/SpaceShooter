@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Enemy : Ship 
 {
@@ -7,10 +8,12 @@ public class Enemy : Ship
 	public int point = 10;
 	public SpawnEnemy spawner;
 	public AudioClip clip;
+	static List<GameObject> enemies = new List<GameObject>();
 
 	public virtual void Start () 
 	{
 		velocity = new Vector3(Random.Range(-5f,-1.5f),0,0);
+		enemies.Add (gameObject);
 	}
 	
 	public virtual void Update () 
@@ -23,7 +26,7 @@ public class Enemy : Ship
 
 		if (obj.CompareTag("Bullet"))
 		{
-			spawner.RemoveEnemy(col.gameObject);
+			enemies.Remove(col.gameObject);
 			GameObject.Find ("GameManager").GetComponent<ScoreClass>().Score = point;
 			Destroy(obj);
 			Destroy (gameObject);
@@ -33,12 +36,12 @@ public class Enemy : Ship
 		{
 			HealthClass hc = obj.GetComponent<HealthClass>();
 			hc.Health = damage;
-			spawner.RemoveEnemy(gameObject);
+			enemies.Remove(gameObject);
 			Destroy (gameObject);
 		}
 		else if(obj.CompareTag("Deathzone"))
 		{
-			spawner.RemoveEnemy(obj);
+			enemies.Remove(obj);
 			Destroy(obj);
 		}
 	}
