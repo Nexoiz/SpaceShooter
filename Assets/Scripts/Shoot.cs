@@ -14,7 +14,7 @@ public class Shoot : MonoBehaviour {
 				set;
 	}
 
-	void Update () 
+	public void Shooting () 
 	{
 		timer += Time.deltaTime;
 		if (timer > fireRate) 
@@ -23,7 +23,7 @@ public class Shoot : MonoBehaviour {
 			ShootAction();
 		}
 	}
-	void ShootAction ()
+	public void ShootAction ()
 	{
 		GameObject sphere = (GameObject)Instantiate (Bullet, ShootPos.position, Quaternion.identity);
 		sphere.rigidbody2D.velocity = new Vector2 (8, 0);

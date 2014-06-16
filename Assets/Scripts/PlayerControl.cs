@@ -9,11 +9,13 @@ public class PlayerControl : Ship {
 	public GUIStyle myStyleUp;
 	public GUIStyle myStyleDown;
 	public Texture2D texturePause;
+	public Shoot shootScript;
 	
 	private Rect upRect, downRect, aRect, bRect, dRect;
 	
 	void Start () 
 	{
+		shootScript = gameObject.GetComponent<Shoot>();
 		DeathZone ();
 		SetGUICoordinates();
 
@@ -46,9 +48,9 @@ public class PlayerControl : Ship {
 		{
 			translation = -1;
 		}
-		if(GUI.Button (aRect, "weapon1"))
+		if(GUI.RepeatButton (aRect, "weapon1"))
 		{
-
+			shootScript.Shooting();
 		}
 		if(GUI.Button (bRect, "weapon2"))
 		{
