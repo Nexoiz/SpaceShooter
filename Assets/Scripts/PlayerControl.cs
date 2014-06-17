@@ -24,7 +24,26 @@ public class PlayerControl : Ship {
 	float translation = 0f;
 	void Update () 
 	{
-		//translation = Input.GetAxis ("Vertical");
+		foreach (Touch t in Input.touches) 
+		{
+			Vector3 position = t.position;
+			if(upRect.Contains(position))
+			{
+				translation = 1;
+			}
+			else if (downRect.Contains(position))
+			{
+				translation = -1;
+			}
+			else if (aRect.Contains (position))
+			{
+				shootScript.Shooting();
+			}
+			else if (bRect.Contains(position))
+			{
+
+			}
+		}
 		Move(translation);
 	}
 
@@ -55,16 +74,6 @@ public class PlayerControl : Ship {
 		if(GUI.Button (bRect, "weapon2"))
 		{
 
-		}
-	}
-
-	void OnTriggerEnter2D(Collider2D col)
-	{
-		if (col.gameObject.CompareTag ("Ending")) 
-		{
-			GameManager.state = State.GameWon;
-			print ("You Won!");
-			StateChecker ();
 		}
 	}
 

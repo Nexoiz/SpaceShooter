@@ -8,25 +8,28 @@ public class Enemy : Ship
 	public int point = 10;
 	public SpawnEnemy spawner;
 	public AudioClip clip;
-	static List<GameObject> enemies = new List<GameObject>();
+
+	public static List<GameObject> enemies = new List<GameObject>();
+
 	public GameObject explosion;
+
 	protected virtual void Start () 
 	{
 		velocity = new Vector3(Random.Range(-5f,-1.5f),0,0);
 		enemies.Add (gameObject);
 	}
 	
-	public virtual void Update () 
+	protected virtual void Update () 
 	{
 		Move (velocity.x);
 	}
 	protected virtual void OnCollisionEnter2D(Collision2D col)
 	{
 		GameObject obj = col.gameObject;
-
+		
 		if (obj.CompareTag("Bullet"))
 		{
-			enemies.Remove(col.gameObject);
+			enemies.Remove(gameObject);
 			GameObject.Find ("GameManager").GetComponent<ScoreClass>().Score = point;
 			Destroy(obj);
 			Destroy (gameObject);
@@ -39,6 +42,7 @@ public class Enemy : Ship
 			hc.Health = damage;
 			enemies.Remove(gameObject);
 			Destroy (gameObject);
+
 			if(explosion != null)Instantiate (explosion, transform.position, Quaternion.identity);
 			AudioSource.PlayClipAtPoint(clip, transform.position);
 		}

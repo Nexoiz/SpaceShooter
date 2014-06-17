@@ -30,7 +30,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 1
+=======
+  spriteMode: 2
+>>>>>>> 351e511e8c645414b1a0ea4fff3fb93e8ba24aae
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
