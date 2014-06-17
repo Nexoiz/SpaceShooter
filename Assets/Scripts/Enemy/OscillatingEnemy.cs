@@ -6,7 +6,7 @@ public class OscillatingEnemy : Enemy {
 	public float omega = 0.5f;
 	public float index = 0;
 
-	public override void Start () 
+	protected override void Start () 
 	{
 		base.Start ();
 
