@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Meteor : Enemy {
 
-	public override void Start () {
+	protected override void Start () {
 		velocity = new Vector3(Random.Range(1.5f,5.0f),0,0);
 	}
 	
