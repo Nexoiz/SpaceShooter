@@ -10,7 +10,7 @@ public class Enemy : Ship
 	public AudioClip clip;
 	static List<GameObject> enemies = new List<GameObject>();
 
-	public virtual void Start () 
+	protected virtual void Start () 
 	{
 		velocity = new Vector3(Random.Range(-5f,-1.5f),0,0);
 		enemies.Add (gameObject);
@@ -20,7 +20,7 @@ public class Enemy : Ship
 	{
 		Move (velocity.x);
 	}
-	void OnCollisionEnter2D(Collision2D col)
+	protected virtual void OnCollisionEnter2D(Collision2D col)
 	{
 		GameObject obj = col.gameObject;
 
@@ -38,6 +38,7 @@ public class Enemy : Ship
 			hc.Health = damage;
 			enemies.Remove(gameObject);
 			Destroy (gameObject);
+			AudioSource.PlayClipAtPoint(clip, transform.position);
 		}
 		else if(obj.CompareTag("Deathzone"))
 		{
