@@ -8,13 +8,11 @@ public class Enemy : Ship
 	public int point = 10;
 	public SpawnEnemy spawner;
 	public AudioClip clip;
-<<<<<<< HEAD
+
 	public static List<GameObject> enemies = new List<GameObject>();
-	
-=======
-	static List<GameObject> enemies = new List<GameObject>();
+
 	public GameObject explosion;
->>>>>>> 54d0774df1244892f161008a6654a7e732d6d879
+
 	protected virtual void Start () 
 	{
 		velocity = new Vector3(Random.Range(-5f,-1.5f),0,0);
@@ -44,11 +42,9 @@ public class Enemy : Ship
 			hc.Health = damage;
 			enemies.Remove(gameObject);
 			Destroy (gameObject);
-<<<<<<< HEAD
-=======
+
 			if(explosion != null)Instantiate (explosion, transform.position, Quaternion.identity);
 			AudioSource.PlayClipAtPoint(clip, transform.position);
->>>>>>> 54d0774df1244892f161008a6654a7e732d6d879
 		}
 		else if(obj.CompareTag("Deathzone"))
 		{
