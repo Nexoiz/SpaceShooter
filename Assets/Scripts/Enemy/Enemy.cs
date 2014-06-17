@@ -9,7 +9,7 @@ public class Enemy : Ship
 	public SpawnEnemy spawner;
 	public AudioClip clip;
 	static List<GameObject> enemies = new List<GameObject>();
-
+	public GameObject explosion;
 	protected virtual void Start () 
 	{
 		velocity = new Vector3(Random.Range(-5f,-1.5f),0,0);
@@ -30,6 +30,7 @@ public class Enemy : Ship
 			GameObject.Find ("GameManager").GetComponent<ScoreClass>().Score = point;
 			Destroy(obj);
 			Destroy (gameObject);
+			if(explosion != null)Instantiate (explosion, transform.position, Quaternion.identity);
 			AudioSource.PlayClipAtPoint(clip, transform.position);
 		}
 		else if(obj.CompareTag ("Player"))
@@ -38,12 +39,13 @@ public class Enemy : Ship
 			hc.Health = damage;
 			enemies.Remove(gameObject);
 			Destroy (gameObject);
+			if(explosion != null)Instantiate (explosion, transform.position, Quaternion.identity);
 			AudioSource.PlayClipAtPoint(clip, transform.position);
 		}
 		else if(obj.CompareTag("Deathzone"))
 		{
-			enemies.Remove(obj);
-			Destroy(obj);
+			enemies.Remove(gameObject);
+			Destroy(gameObject);
 		}
 	}
 	public override void Move(float translation)
