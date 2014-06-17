@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class StartLevel1 : LevelMethod {
-
+	
 }
 
 public  class LevelMethod:MonoBehaviour
@@ -11,8 +11,8 @@ public  class LevelMethod:MonoBehaviour
 	public GameObject prefab;
 	public float frequency = 1; 
 	protected float timer = 0;
-
-	void Start () 
+	
+	void Awake () 
 	{
 		spawnerPoint = GameObject.Find("Spawner").transform;
 	}
@@ -25,7 +25,12 @@ public  class LevelMethod:MonoBehaviour
 		}
 		
 		timer = 0;
+		
+		print(spawnerPoint);
+		print(prefab);
+		print(transform);
 		Vector3 enemyPos = new Vector3(spawnerPoint.position.x,Random.Range (-5f,5f),0);
+		
 		Instantiate(prefab,enemyPos,transform.rotation);
 	}
 }

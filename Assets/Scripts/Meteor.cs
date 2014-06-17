@@ -7,7 +7,7 @@ public class Meteor : Enemy {
 		velocity = new Vector3(Random.Range(1.5f,5.0f),0,0);
 	}
 	
-	public override void Update () {
+	protected override void Update () {
 		transform.Translate ( -velocity.x * Time.deltaTime, 0, 0, Space.World);
 	}
 }

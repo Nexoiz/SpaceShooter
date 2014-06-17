@@ -13,7 +13,7 @@ public class OscillatingEnemy : Enemy {
 	}
 	
 
-	public override void Update () 
+	protected override void Update () 
 	{
 		index += Time.deltaTime;
 		Vector3 vPos = transform.position;

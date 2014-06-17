@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 	{
 		if (state == State.GameWon) 
 		{
-			Time.timeScale = 0.0f;
+			//Time.timeScale = 0.0f;
 		}
 		if (state == State.Pause) 
 		{
