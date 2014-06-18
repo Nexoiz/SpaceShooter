@@ -25,10 +25,6 @@ public  class LevelMethod:MonoBehaviour
 		}
 		
 		timer = 0;
-		
-		print(spawnerPoint);
-		print(prefab);
-		print(transform);
 		Vector3 enemyPos = new Vector3(spawnerPoint.position.x,Random.Range (-5f,5f),0);
 		
 		Instantiate(prefab,enemyPos,transform.rotation);
