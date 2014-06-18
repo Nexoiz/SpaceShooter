@@ -24,9 +24,11 @@ public class PlayerControl : Ship {
 	float translation = 0f;
 	void Update () 
 	{
-		foreach (Touch t in Input.touches) 
+#if UNITY_ANDROID
+		int count = Input.touchCount;
+		for ( int i = 0; i < count; i++) 
 		{
-			Vector3 position = t.position;
+			Vector3 position = Input.GetTouch(i);
 			if(upRect.Contains(position))
 			{
 				translation = 1;
@@ -44,6 +46,7 @@ public class PlayerControl : Ship {
 
 			}
 		}
+		#endif
 		Move(translation);
 	}
 
@@ -55,7 +58,7 @@ public class PlayerControl : Ship {
 		pos.y = Mathf.Clamp(pos.y, bottomPosition.position.y, topPosition.position.y);
 		transform.position = pos;
 	}
-
+#if UNITY_EDITOR
 	void OnGUI () 
 	{	
 		translation = 0f;
@@ -76,7 +79,7 @@ public class PlayerControl : Ship {
 
 		}
 	}
-
+#endif
 	void DeathZone()
 	{
 		GameObject obj = new GameObject ("DeathZone");
