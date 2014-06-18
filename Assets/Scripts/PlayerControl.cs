@@ -12,8 +12,8 @@ public class PlayerControl : Ship {
 	public Shoot shootScript;
 	
 	private Rect upRect, downRect, aRect, bRect, dRect;
-	
-	void Start () 
+
+	void Start ()  
 	{
 		shootScript = gameObject.GetComponent<Shoot>();
 		DeathZone ();
@@ -21,14 +21,15 @@ public class PlayerControl : Ship {
 
 		velocity = new Vector3(3.0f,0,0);
 	}
-	float translation = 0f;
+
 	void Update () 
 	{
-#if UNITY_ANDROID
+		float translation = 0;
 		int count = Input.touchCount;
 		for ( int i = 0; i < count; i++) 
 		{
-			Vector3 position = Input.GetTouch(i);
+			Vector3 position = Input.GetTouch(i).position;
+			position.y = (position.y - Screen.height) * -1;
 			if(upRect.Contains(position))
 			{
 				translation = 1;
@@ -46,7 +47,6 @@ public class PlayerControl : Ship {
 
 			}
 		}
-		#endif
 		Move(translation);
 	}
 
@@ -58,28 +58,13 @@ public class PlayerControl : Ship {
 		pos.y = Mathf.Clamp(pos.y, bottomPosition.position.y, topPosition.position.y);
 		transform.position = pos;
 	}
-#if UNITY_EDITOR
 	void OnGUI () 
-	{	
-		translation = 0f;
-		if (GUI.RepeatButton (upRect,"", myStyleUp)) 
-		{
-			translation = 1;	
-		}
-		if (GUI.RepeatButton (downRect, "", myStyleDown)) 
-		{
-			translation = -1;
-		}
-		if(GUI.RepeatButton (aRect, "weapon1"))
-		{
-			shootScript.Shooting();
-		}
-		if(GUI.Button (bRect, "weapon2"))
-		{
-
-		}
+	{
+		GUI.Box (upRect,"", myStyleUp);
+		GUI.Box (downRect, "", myStyleDown);
+		GUI.Box (aRect, "weapon1");
+		GUI.Button (bRect, "");
 	}
-#endif
 	void DeathZone()
 	{
 		GameObject obj = new GameObject ("DeathZone");
